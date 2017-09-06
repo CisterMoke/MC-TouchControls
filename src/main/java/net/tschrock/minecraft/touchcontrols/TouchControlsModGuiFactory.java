@@ -25,7 +25,17 @@
 /*    */   {
 /* 26 */     return null;
 /*    */   }
-/*    */ }
+/*    */
+@Override
+public boolean hasConfigGui() {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public GuiScreen createConfigGui(GuiScreen parentScreen) {
+	// TODO Auto-generated method stub
+	return null;
+} }
 
 
 /* Location:              /home/alan/Downloads/touchcontrols-1.8-0.0.3(1).jar!/net/tschrock/minecraft/touchcontrols/TouchControlsModGuiFactory.class

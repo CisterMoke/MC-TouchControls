@@ -12,7 +12,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.play.client.C16PacketClientStatus;
+import net.minecraft.network.play.client.CPacketClientStatus;
 import net.minecraft.util.ReportedException;
 
 import org.lwjgl.input.Keyboard;
@@ -28,7 +28,7 @@ public class KeyHelper {
 
 	public static void clearChat(Minecraft mc) {
 		if (mc.ingameGUI != null) {
-			mc.ingameGUI.getChatGUI().clearChatMessages();
+			mc.ingameGUI.getChatGUI().clearChatMessages(true);
 		}
 	}
 
@@ -112,19 +112,19 @@ public class KeyHelper {
 		slot = slot < 9 ? slot : 0;
 		slot = slot > 0 ? slot : 0;
 
-		if (mc.thePlayer.isSpectator()) {
-			mc.ingameGUI.func_175187_g().func_175260_a(slot);
+		if (mc.player.isSpectator()) {
+			mc.ingameGUI.getSpectatorGui().onHotbarSelected(slot); 
 		} else {
-			mc.thePlayer.inventory.currentItem = slot;
+			mc.player.inventory.currentItem = slot;
 		}
 	}
 
 	public static void showInventoryGui(Minecraft mc) {
 		if (mc.playerController.isRidingHorse()) {
-			mc.thePlayer.sendHorseInventory();
+			mc.player.sendHorseInventory();
 		} else {
-			mc.getNetHandler().addToSendQueue(new C16PacketClientStatus(C16PacketClientStatus.EnumState.OPEN_INVENTORY_ACHIEVEMENT));
-			mc.displayGuiScreen(new GuiInventory(mc.thePlayer));
+			mc.getConnection().getNetworkManager().sendPacket(new CPacketClientStatus(CPacketClientStatus.State.OPEN_INVENTORY_ACHIEVEMENT));
+			mc.displayGuiScreen(new GuiInventory(mc.player));
 		}
 	}
 
@@ -133,8 +133,8 @@ public class KeyHelper {
 	}
 
 	public static void dropHeldItem(Minecraft mc, boolean dropAll) {
-		if (!mc.thePlayer.isSpectator()) {
-			mc.thePlayer.dropOneItem(dropAll);
+		if (!mc.player.isSpectator()) {
+			mc.player.dropItem(dropAll);
 		}
 	}
 

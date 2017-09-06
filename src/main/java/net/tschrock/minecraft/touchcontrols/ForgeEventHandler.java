@@ -63,10 +63,10 @@ public class ForgeEventHandler implements IMCGuiButtonPushListener {
 
 	@SubscribeEvent
 	public void onRenderGameOverlay(RenderGameOverlayEvent.Post event) {
-		if (event.type == ElementType.ALL) {
+		if (event.getType() == ElementType.ALL) {
 
-			width = event.resolution.getScaledWidth();
-			height = event.resolution.getScaledHeight();
+			width = event.getResolution().getScaledWidth();
+			height = event.getResolution().getScaledHeight();
 
 			overlay.width = width;
 			overlay.height = height;
@@ -93,7 +93,7 @@ public class ForgeEventHandler implements IMCGuiButtonPushListener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				overlay.drawScreen(0, 0, event.partialTicks);
+				overlay.drawScreen(0, 0, event.getPartialTicks());
 			}
 		}
 	}
@@ -120,33 +120,33 @@ public class ForgeEventHandler implements IMCGuiButtonPushListener {
 		
 		if (homeMod.getTouchMode()) {
 			escapeBtn.draw(Minecraft.getMinecraft());
-			if (escapeBtn.checkBounds(event.mouseX, event.mouseY)) {
+			if (escapeBtn.checkBounds(event.getMouseX(), event.getMouseY())) {
 				if (!escapeBtn.isMouseOver()) {
-					escapeBtn.onMouseOver(new MCGuiMouseEvent(event.mouseX, event.mouseY));
+					escapeBtn.onMouseOver(new MCGuiMouseEvent(event.getMouseX(), event.getMouseY()));
 				}
 
 				if (Mouse.isButtonDown(0)) {
 
 					if (!escapeBtn.isMouseDown()) {
-						escapeBtn.onMouseDown(new MCGuiMouseEvent(0, event.mouseX, event.mouseY));
+						escapeBtn.onMouseDown(new MCGuiMouseEvent(0, event.getMouseX(), event.getMouseY()));
 					}
 
 				} else {
 					if (escapeBtn.isMouseDown()) {
-						escapeBtn.onMouseUp(new MCGuiMouseEvent(0, event.mouseX, event.mouseY));
-						escapeBtn.onMouseClick(new MCGuiMouseEvent(0, event.mouseX, event.mouseY));
+						escapeBtn.onMouseUp(new MCGuiMouseEvent(0, event.getMouseX(), event.getMouseY()));
+						escapeBtn.onMouseClick(new MCGuiMouseEvent(0, event.getMouseX(), event.getMouseY()));
 					}
 				}
 
 			} else {
 				if (escapeBtn.isMouseOver()) {
-					escapeBtn.onMouseOut(new MCGuiMouseEvent(event.mouseX, event.mouseY));
+					escapeBtn.onMouseOut(new MCGuiMouseEvent(event.getMouseX(), event.getMouseY()));
 				}
 			}
 
 			if (!Mouse.isButtonDown(0)) {
 				if (escapeBtn.isMouseDown()) {
-					escapeBtn.onMouseUp(new MCGuiMouseEvent(0, event.mouseX, event.mouseY));
+					escapeBtn.onMouseUp(new MCGuiMouseEvent(0, event.getMouseX(), event.getMouseY()));
 				}
 			}
 		}

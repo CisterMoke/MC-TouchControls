@@ -5,7 +5,9 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.RenderGlobal;;
 
 public class MCGui extends Gui {
 
@@ -14,7 +16,7 @@ public class MCGui extends Gui {
 	}
 
 	public void drawCircle(float x1, float y1, float radius, int num_segments, int color) {
-
+/*
 		double theta = 2 * 3.1415926 / (double) num_segments;
 		float c = (float) Math.cos(theta); // precalculate the sine and cosine
 		float s = (float) Math.sin(theta);
@@ -30,17 +32,17 @@ public class MCGui extends Gui {
 
 		int j1;
 
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		Tessellator te = Tessellator.getInstance();
+        VertexBuffer b = te.getBuffer();
 		//GlStateManager.enableBlend();
 		GlStateManager.disableTexture2D();
 		//GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 		GlStateManager.color(f, f1, f2, f3);
-		worldrenderer.startDrawing(GL11.GL_TRIANGLE_FAN);
+		b.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION_COLOR);
 
 		for (int ii = 0; ii < num_segments; ii++) {
 
-			worldrenderer.addVertex((double) x + x1, (double) y + y1, 0.0D);
+			b.pos((double) x + x1, (double) y + y1, 0.0D);
 
 			// apply the rotation matrix
 			t = x;
@@ -48,13 +50,13 @@ public class MCGui extends Gui {
 			y = -s * t + c * y;
 		}
 
-		tessellator.draw();
+		te.draw();
 		GlStateManager.enableTexture2D();
 		//GlStateManager.disableBlend();
-
+*/
 	}
 	public void drawCircleOutline(float x1, float y1, float radius, int num_segments, int color) {
-
+/*
 		double theta = 2 * 3.1415926 / (double) num_segments;
 		float c = (float) Math.cos(theta); // precalculate the sine and cosine
 		float s = (float) Math.sin(theta);
@@ -70,17 +72,17 @@ public class MCGui extends Gui {
 
 		int j1;
 
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		Tessellator te = Tessellator.getInstance();
+        VertexBuffer b = te.getBuffer();
 		//GlStateManager.enableBlend();
 		GlStateManager.disableTexture2D();
 		//GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 		GlStateManager.color(f, f1, f2, f3);
-		worldrenderer.startDrawing(GL11.GL_LINE_LOOP);
+		b.begin(GL11.GL_LINE_LOOP, DefaultVertexFormats.POSITION_COLOR);
 
 		for (int ii = 0; ii < num_segments; ii++) {
 
-			worldrenderer.addVertex((double) x + x1, (double) y + y1, 0.0D);
+			b.pos((double) x + x1, (double) y + y1, 0.0D);
 
 			// apply the rotation matrix
 			t = x;
@@ -88,9 +90,9 @@ public class MCGui extends Gui {
 			y = -s * t + c * y;
 		}
 
-		tessellator.draw();
+		te.draw();
 		GlStateManager.enableTexture2D();
-		//GlStateManager.disableBlend();
+		//GlStateManager.disableBlend();*/
 
 	}
 

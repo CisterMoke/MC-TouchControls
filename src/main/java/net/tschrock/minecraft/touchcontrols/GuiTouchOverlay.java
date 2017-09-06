@@ -139,7 +139,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		recalcComponentPos();
-		drawCenteredString(Minecraft.getMinecraft().fontRendererObj, "Touch Mode", width / 2, height / 2, 0xffff55aa);
+		//drawCenteredString(Minecraft.getMinecraft().fontRendererObj, "Touch Mode", width / 2, height / 2, 0xffff55aa);
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
 
@@ -229,8 +229,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 				if (!TouchControlsMod.config_invertY) {
 					dy = -dy;
 				}
-
-				mc.thePlayer.setAngles(dx, dy);
+				mc.player.turn(dx, dy);
 				break;
 			default:
 				break;
@@ -262,7 +261,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 			case DRAG_START:
 			case DRAG_UPDATE:
 			case DRAG_END:
-				if (mc.thePlayer.inventory.currentItem != eXIndex) {
+				if (mc.player.inventory.currentItem != eXIndex) {
 					KeyHelper.selectHotbarSlot(mc, eXIndex);
 				}
 				break;

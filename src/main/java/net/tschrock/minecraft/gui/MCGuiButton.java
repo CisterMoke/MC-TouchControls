@@ -140,7 +140,7 @@ public class MCGuiButton extends MCGuiLabel {
 		DebugHelper.log(LogLevel.DEBUG, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseClick at (" + event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
 		if (enabled && visible && event.getButton() == 0 && checkBounds(event.getX(), event.getY())) {
 			if (buttonSoundLocation != null) {
-				Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation(buttonSoundLocation), 1.0F));
+				//Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord(new ResourceLocation(buttonSoundLocation), 1.0F));
 			}
 			fireButtonPushEvent(new MCGuiButtonPushEvent(this, event.getX(), event.getY()));
 		}
