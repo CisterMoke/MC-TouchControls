@@ -30,6 +30,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 	MCGuiButton menuBtn;
 	MCGuiButton invBtn;
 	MCGuiButton dropBtn;
+	MCGuiButton chatBtn;
 	MCGuiTouchPad hotbarPad;
 	MCGuiButton interactToggleBtn;
 	boolean interactToggle = false;
@@ -47,6 +48,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 		addComponent(menuBtn = new MCGuiButton(3, "Menu", 0, 0, 50, 20));
 		addComponent(invBtn = new MCGuiButton(4, "Inventory", 4, dPad.getPreferedY() - 20, dPad.getPreferedWidth(), 20));
 		addComponent(dropBtn = new MCGuiButton(5, "Drop Item", 4, dPad.getPreferedY() - 40, dPad.getPreferedWidth(), 20));
+		addComponent(chatBtn = new MCGuiButton(6, "Chat", 4, dPad.getPreferedY() - 60, dPad.getPreferedWidth(), 20));
 		addComponent(hotbarPad = new MCGuiTouchPad(6, (width / 2) - 91, height - 22, 182, 22, 0, MCGui.argbToColorInt(255, 225, 225, 225)));
 		addComponent(interactToggleBtn = new MCGuiButton(7, "Attack / Eat", width - 100, height - 20, 100, 20));
 
@@ -54,6 +56,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 		menuBtn.registerButtonPushListener(this);
 		invBtn.registerButtonPushListener(this);
 		dropBtn.registerButtonPushListener(this);
+		chatBtn.registerButtonPushListener(this);
 		hotbarPad.registerTouchPadListener(this);
 		interactToggleBtn.registerButtonPushListener(this);
 
@@ -154,6 +157,8 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 		invBtn.setPreferedWidth(dPad.getPreferedWidth());
 		dropBtn.setPreferedY(dPad.getPreferedY() - 40);
 		dropBtn.setPreferedWidth(dPad.getPreferedWidth());
+		chatBtn.setPreferedY(dPad.getPreferedY() - 60);
+		chatBtn.setPreferedWidth(dPad.getPreferedWidth());
 		hotbarPad.setPreferedX((width / 2) - 91);
 		hotbarPad.setPreferedY(height - 22);
 		interactToggleBtn.setPreferedX(width - 100);
@@ -172,6 +177,9 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 			break;
 		case 5:
 			KeyHelper.dropHeldItem(mc);
+			break;
+		case 6:
+			KeyHelper.showChatGui(mc);
 			break;
 		case 7:
 			interactToggle = !interactToggle;
