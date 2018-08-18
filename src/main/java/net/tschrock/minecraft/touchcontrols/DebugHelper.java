@@ -11,8 +11,6 @@ import java.util.List;
 
 import org.lwjgl.opengl.Display;
 
-import com.sun.glass.ui.Window.Level;
-
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;

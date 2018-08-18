@@ -123,7 +123,7 @@ public class KeyHelper {
 		if (mc.playerController.isRidingHorse()) {
 			mc.player.sendHorseInventory();
 		} else {
-			mc.getConnection().getNetworkManager().sendPacket(new CPacketClientStatus(CPacketClientStatus.State.OPEN_INVENTORY_ACHIEVEMENT));
+			mc.getConnection().getNetworkManager().sendPacket(new CPacketClientStatus(CPacketClientStatus.State.REQUEST_STATS));
 			mc.displayGuiScreen(new GuiInventory(mc.player));
 		}
 	}

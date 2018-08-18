@@ -5,7 +5,6 @@
 /*    */ import net.minecraft.client.gui.GuiScreen;
 /*    */ import net.minecraftforge.fml.client.IModGuiFactory;
 /*    */ import net.minecraftforge.fml.client.IModGuiFactory.RuntimeOptionCategoryElement;
-/*    */ import net.minecraftforge.fml.client.IModGuiFactory.RuntimeOptionGuiHandler;
 /*    */ 
 /*    */ public class TouchControlsModGuiFactory implements IModGuiFactory
 /*    */ {
@@ -21,10 +20,7 @@
 /* 21 */     return null;
 /*    */   }
 /*    */   
-/*    */   public IModGuiFactory.RuntimeOptionGuiHandler getHandlerFor(IModGuiFactory.RuntimeOptionCategoryElement element)
-/*    */   {
-/* 26 */     return null;
-/*    */   }
+/*    */   
 /*    */
 @Override
 public boolean hasConfigGui() {
