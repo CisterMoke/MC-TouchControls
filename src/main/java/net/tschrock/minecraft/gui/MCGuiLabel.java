@@ -44,7 +44,7 @@ public class MCGuiLabel extends MCGuiComponent {
 	public MCGuiLabel(int id, String text, int x, int y, int width, int height) {
 		super(id, x, y, width, height);
 		this.text = text;
-		this.fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+		this.fontRenderer = Minecraft.getMinecraft().fontRenderer;
 	}
 
 	@Override

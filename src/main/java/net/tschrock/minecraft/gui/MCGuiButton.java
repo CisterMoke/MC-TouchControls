@@ -3,10 +3,7 @@ package net.tschrock.minecraft.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.text.TextAlignment;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
