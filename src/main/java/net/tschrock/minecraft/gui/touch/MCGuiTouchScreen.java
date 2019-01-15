@@ -66,20 +66,21 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 
 				if (ema.overComponent != ema.startComponent && touchedComp == ema.startComponent) {
 					if (touchedComp != null) {
-						touchedComp.onMouseOut(new MCGuiMouseEvent(-1, ema.startTouchEvent.getAdjustedX(width), ema.startTouchEvent
-								.getAdjustedY(height), true));
+						touchedComp.onMouseOut(new MCGuiMouseEvent(-1, ema.startTouchEvent.getAdjustedX(width),
+								ema.startTouchEvent.getAdjustedY(height), true));
 					}
 					if (ema.startComponent != null) {
-						ema.startComponent.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent),
-								true));
+						ema.startComponent.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent),
+								getAdjustedY(ema.startTouchEvent), true));
 					}
 				} else if (ema.overComponent == ema.startComponent && touchedComp != ema.startComponent) {
 					if (ema.startComponent != null) {
-						ema.startComponent.onMouseOut(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent),
-								true));
+						ema.startComponent.onMouseOut(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent),
+								getAdjustedY(ema.startTouchEvent), true));
 					}
 					if (touchedComp != null) {
-						touchedComp.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent), true));
+						touchedComp.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent),
+								getAdjustedY(ema.startTouchEvent), true));
 					}
 				}
 
@@ -88,10 +89,12 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 
 			if (event.getType() == Type.TOUCH_START) {
 
-				emulatedMouseActions.put(event.getId(), ema = new EmulatedMouseAction(event, Minecraft.getSystemTime(), touchedComp, touchedComp));
+				emulatedMouseActions.put(event.getId(),
+						ema = new EmulatedMouseAction(event, Minecraft.getSystemTime(), touchedComp, touchedComp));
 
 				if (touchedComp != null) {
-					touchedComp.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent), true));
+					touchedComp.onMouseOver(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent),
+							getAdjustedY(ema.startTouchEvent), true));
 				}
 
 			} else if (event.getType() == Type.TOUCH_UPDATE && ema != null) {
@@ -100,11 +103,12 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 				// Set clickType = right
 				// Start right click
 
-				if ((Minecraft.getSystemTime() - ema.startTime) > emulatedClickTimeout && ema.clickType == ClickType.UNDETERMINED) {
+				if ((Minecraft.getSystemTime() - ema.startTime) > emulatedClickTimeout
+						&& ema.clickType == ClickType.UNDETERMINED) {
 					ema.clickType = ClickType.RIGHT;
 					if (ema.startComponent != null) {
-						ema.startComponent.onMouseDown(new MCGuiMouseEvent(1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent),
-								true));
+						ema.startComponent.onMouseDown(new MCGuiMouseEvent(1, getAdjustedX(ema.startTouchEvent),
+								getAdjustedY(ema.startTouchEvent), true));
 					}
 				}
 
@@ -141,7 +145,8 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 				if (ema.actionType == ActionType.DRAG) {
 
 					if (ema.startComponent != null) {
-						ema.startComponent.onMouseMove(new MCGuiMouseEvent(-1, getAdjustedX(event), getAdjustedY(event), true));
+						ema.startComponent
+								.onMouseMove(new MCGuiMouseEvent(-1, getAdjustedX(event), getAdjustedY(event), true));
 					}
 				}
 
@@ -155,8 +160,8 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 					ema.clickType = ClickType.LEFT;
 
 					if (ema.startComponent != null) {
-						ema.startComponent.onMouseDown(new MCGuiMouseEvent(0, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent),
-								true));
+						ema.startComponent.onMouseDown(new MCGuiMouseEvent(0, getAdjustedX(ema.startTouchEvent),
+								getAdjustedY(ema.startTouchEvent), true));
 					}
 				}
 
@@ -167,8 +172,8 @@ public class MCGuiTouchScreen extends MCGuiScreen {
 					if (ema.startComponent == ema.overComponent) {
 						sendEMouseClickEvent(ema, event);
 					}
-					ema.startComponent
-							.onMouseOut(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent), getAdjustedY(ema.startTouchEvent), true));
+					ema.startComponent.onMouseOut(new MCGuiMouseEvent(-1, getAdjustedX(ema.startTouchEvent),
+							getAdjustedY(ema.startTouchEvent), true));
 				}
 
 				// Remove from list

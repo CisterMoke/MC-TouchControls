@@ -11,14 +11,13 @@ import org.lwjgl.input.Keyboard;
 
 public class KeyHandler {
 
-
 	/** Key index for easy handling */
 	public static final int TOUCH_TOGGLE = 0;
 	public static final int TOUCH_SETTING = 1;
 	/** Key descriptions; use a language file to localize the description later */
-	private static final String[] desc = { "key.tut_inventory.desc" , "key.tut_sett.desc"};
+	private static final String[] desc = { "key.tut_inventory.desc", "key.tut_sett.desc" };
 	/** Default key values */
-	private static final int[] keyValues = { Keyboard.KEY_P, Keyboard.KEY_O};
+	private static final int[] keyValues = { Keyboard.KEY_P, Keyboard.KEY_O };
 	private final KeyBinding[] keys;
 
 	TouchControlsMod homeMod;
@@ -27,25 +26,23 @@ public class KeyHandler {
 		homeMod = mod;
 		keys = new KeyBinding[desc.length];
 		for (int i = 0; i < desc.length; ++i) {
-			keys[i] = new KeyBinding(desc[i], keyValues[i],
-					"key.tutorial.category");
+			keys[i] = new KeyBinding(desc[i], keyValues[i], "key.tutorial.category");
 			ClientRegistry.registerKeyBinding(keys[i]);
 		}
 	}
 
 	/**
-	 * KeyInputEvent is in the FML package, so we must register to the FML event
-	 * bus
+	 * KeyInputEvent is in the FML package, so we must register to the FML event bus
 	 */
 	@SubscribeEvent
 	public void onKeyInput(KeyInputEvent event) {
 		// FMLClientHandler.instance().getClient().inGameHasFocus
 		if (keys[TOUCH_TOGGLE].isPressed()) {
 			homeMod.toggleTouchMode();
-			//Minecraft.getMinecraft().displayGuiScreen(new MCGuiTestScreen());
+			// Minecraft.getMinecraft().displayGuiScreen(new MCGuiTestScreen());
 		}
 		if (keys[TOUCH_SETTING].isPressed()) {
-			//homeMod.toggleTouchMode();
+			// homeMod.toggleTouchMode();
 			Minecraft.getMinecraft().displayGuiScreen(new MCGuiTestScreen());
 		}
 	}

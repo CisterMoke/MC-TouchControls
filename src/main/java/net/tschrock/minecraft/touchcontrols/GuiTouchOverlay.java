@@ -46,10 +46,13 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 		addComponent(touchPad = new MCGuiTouchPad(0, 0, 0, width, height));
 		addComponent(dPad = new MCGuiTouchDPad(2, 4, height - (4 + dPadSize), dPadSize));
 		addComponent(menuBtn = new MCGuiButton(3, "Menu", 0, 0, 50, 20));
-		addComponent(invBtn = new MCGuiButton(4, "Inventory", 4, dPad.getPreferedY() - 20, dPad.getPreferedWidth(), 20));
-		addComponent(dropBtn = new MCGuiButton(5, "Drop Item", 4, dPad.getPreferedY() - 40, dPad.getPreferedWidth(), 20));
+		addComponent(
+				invBtn = new MCGuiButton(4, "Inventory", 4, dPad.getPreferedY() - 20, dPad.getPreferedWidth(), 20));
+		addComponent(
+				dropBtn = new MCGuiButton(5, "Drop Item", 4, dPad.getPreferedY() - 40, dPad.getPreferedWidth(), 20));
 		addComponent(chatBtn = new MCGuiButton(6, "Chat", 4, dPad.getPreferedY() - 60, dPad.getPreferedWidth(), 20));
-		addComponent(hotbarPad = new MCGuiTouchPad(6, (width / 2) - 91, height - 22, 182, 22, 0, MCGui.argbToColorInt(255, 225, 225, 225)));
+		addComponent(hotbarPad = new MCGuiTouchPad(6, (width / 2) - 91, height - 22, 182, 22, 0,
+				MCGui.argbToColorInt(255, 225, 225, 225)));
 		addComponent(interactToggleBtn = new MCGuiButton(7, "Attack / Eat", width - 100, height - 20, 100, 20));
 
 		touchPad.registerTouchPadListener(this);
@@ -142,7 +145,8 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		recalcComponentPos();
-		//drawCenteredString(Minecraft.getMinecraft().fontRendererObj, "Touch Mode", width / 2, height / 2, 0xffff55aa);
+		// drawCenteredString(Minecraft.getMinecraft().fontRendererObj, "Touch Mode",
+		// width / 2, height / 2, 0xffff55aa);
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
 
@@ -191,7 +195,7 @@ public class GuiTouchOverlay extends MCGuiTouchScreen implements IMCGuiButtonPus
 	}
 
 	boolean holdInteractToggle = false;
-	
+
 	@Override
 	public void onTouchPadEvent(TouchPadEvent e) {
 		if (e.getTouchPad() == touchPad) {

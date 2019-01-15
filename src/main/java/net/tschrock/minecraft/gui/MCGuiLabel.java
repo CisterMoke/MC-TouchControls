@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
 public class MCGuiLabel extends MCGuiComponent {
-	
+
 	public enum TextAlignment {
 		LEFT, CENTER
 	}
@@ -50,10 +50,11 @@ public class MCGuiLabel extends MCGuiComponent {
 	@Override
 	public void draw(Minecraft mc) {
 		if (visible) {
-			int fgColor = (enabled) ? foregroundColor : disabledForegroundColor; 
+			int fgColor = (enabled) ? foregroundColor : disabledForegroundColor;
 			super.draw(mc);
 			if (textAlignment == TextAlignment.CENTER) {
-				drawCenteredString(fontRenderer, text, preferedX + (preferedWidth / 2), preferedY + (preferedHeight / 2) - (fontRenderer.FONT_HEIGHT / 2), fgColor);
+				drawCenteredString(fontRenderer, text, preferedX + (preferedWidth / 2),
+						preferedY + (preferedHeight / 2) - (fontRenderer.FONT_HEIGHT / 2), fgColor);
 			} else {
 				drawString(fontRenderer, text, preferedX, preferedY, fgColor);
 			}

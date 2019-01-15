@@ -88,13 +88,19 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 	public void onTouchEvent(TouchEvent event) {
 
 		if (event.getType() == Type.TOUCH_START && !(!this.multitouch && activeTouches.size() > 0)) {
-			DebugHelper.log(LogLevel.DEBUG, "MCGuiTouchpad with id=" + id + " recieved 'TOUCH_START' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+			DebugHelper.log(LogLevel.DEBUG,
+					"MCGuiTouchpad with id=" + id + " recieved 'TOUCH_START' at (" + event.getX() + ", " + event.getY()
+							+ ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+							+ event.getAdjustedY(parentScreen.height) + "]");
 			activeTouches.put(event.getId(), new TrackedTouchEvent(event));
 			if (topTouch == -1) {
 				topTouch = event.getId();
 			}
 		} else if (event.getType() == Type.TOUCH_UPDATE) {
-			DebugHelper.log(LogLevel.DEBUG2, "MCGuiTouchpad with id=" + id + " recieved 'TOUCH_UPDATE' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+			DebugHelper.log(LogLevel.DEBUG2,
+					"MCGuiTouchpad with id=" + id + " recieved 'TOUCH_UPDATE' at (" + event.getX() + ", " + event.getY()
+							+ ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+							+ event.getAdjustedY(parentScreen.height) + "]");
 			TrackedTouchEvent evt = activeTouches.get(event.getId());
 			if (evt != null) {
 				evt.addNewEvent(event);
@@ -129,14 +135,18 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 		} else if (event.getType() == Type.TOUCH_END) {
 			TrackedTouchEvent evt = activeTouches.get(event.getId());
 			if (evt != null) {
-				DebugHelper.log(LogLevel.DEBUG, "MCGuiTouchpad with id=" + id + " recieved 'TOUCH_END' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+				DebugHelper.log(LogLevel.DEBUG,
+						"MCGuiTouchpad with id=" + id + " recieved 'TOUCH_END' at (" + event.getX() + ", "
+								+ event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+								+ event.getAdjustedY(parentScreen.height) + "]");
 				evt.addNewEvent(event);
 
 				// If clickType = unknown
 				// Set clickType = left
 				// Start left click
 
-				if (evt.tapType == TapType.UNDETERMINED && (Minecraft.getSystemTime() - evt.startEvent.getTime()) < TouchControlsMod.config_leftClickTimeout) {
+				if (evt.tapType == TapType.UNDETERMINED && (Minecraft.getSystemTime()
+						- evt.startEvent.getTime()) < TouchControlsMod.config_leftClickTimeout) {
 					evt.tapType = TapType.TAP;
 					fireTouchEvent(new TouchPadEvent(this, evt, TouchPadEvent.Type.TAP));
 				}
@@ -179,7 +189,7 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 				fireTouchEvent(new TouchPadEvent(this, evt, TouchPadEvent.Type.HOLD_START));
 			}
 		}
-		
+
 		if (visible) {
 
 			if (showTouches) {
@@ -187,7 +197,8 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 				for (Map.Entry<Integer, TrackedTouchEvent> activeTouch : activeTouches.entrySet()) {
 					x = activeTouch.getValue().getLastEvent().getAdjustedX(parentScreen.width);
 					y = activeTouch.getValue().getLastEvent().getAdjustedY(parentScreen.height);
-					// int time = (int) (Minecraft.getSystemTime() - activeTouch.getValue().getStartEvent().getTouchTime());
+					// int time = (int) (Minecraft.getSystemTime() -
+					// activeTouch.getValue().getStartEvent().getTouchTime());
 
 					GlStateManager.enableBlend();
 					GlStateManager.blendFunc(GL11.GL_CONSTANT_ALPHA, GL11.GL_DST_COLOR);

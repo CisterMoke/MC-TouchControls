@@ -46,12 +46,13 @@ public class TouchEvent {
 		this.touchTime = Minecraft.getSystemTime();
 	}
 
-	public int getAdjustedX(int width){
+	public int getAdjustedX(int width) {
 		return (this.touchX - TouchManager.getXOffset() + TouchControlsMod.config_xOffset) * width / Display.getWidth();
 	}
-	
-	public int getAdjustedY(int height){
-		return (this.touchY - TouchManager.getYOffset() + TouchControlsMod.config_yOffset) * height / Display.getHeight();
+
+	public int getAdjustedY(int height) {
+		return (this.touchY - TouchManager.getYOffset() + TouchControlsMod.config_yOffset) * height
+				/ Display.getHeight();
 	}
 
 }

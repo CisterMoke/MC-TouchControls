@@ -15,83 +15,63 @@ public class MCGui extends Gui {
 	}
 
 	public void drawCircle(float x1, float y1, float radius, int num_segments, int color) {
-/*
-		double theta = 2 * 3.1415926 / (double) num_segments;
-		float c = (float) Math.cos(theta); // precalculate the sine and cosine
-		float s = (float) Math.sin(theta);
-		float t;
-
-		float x = radius;// we start at angle = 0
-		float y = 0;
-
-		float f3 = (float) (color >> 24 & 255) / 255.0F;
-		float f = (float) (color >> 16 & 255) / 255.0F;
-		float f1 = (float) (color >> 8 & 255) / 255.0F;
-		float f2 = (float) (color & 255) / 255.0F;
-
-		int j1;
-
-		Tessellator te = Tessellator.getInstance();
-        VertexBuffer b = te.getBuffer();
-		//GlStateManager.enableBlend();
-		GlStateManager.disableTexture2D();
-		//GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-		GlStateManager.color(f, f1, f2, f3);
-		b.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION_COLOR);
-
-		for (int ii = 0; ii < num_segments; ii++) {
-
-			b.pos((double) x + x1, (double) y + y1, 0.0D);
-
-			// apply the rotation matrix
-			t = x;
-			x = c * x + s * y;
-			y = -s * t + c * y;
-		}
-
-		te.draw();
-		GlStateManager.enableTexture2D();
-		//GlStateManager.disableBlend();
-*/
+		/*
+		 * double theta = 2 * 3.1415926 / (double) num_segments; float c = (float)
+		 * Math.cos(theta); // precalculate the sine and cosine float s = (float)
+		 * Math.sin(theta); float t;
+		 * 
+		 * float x = radius;// we start at angle = 0 float y = 0;
+		 * 
+		 * float f3 = (float) (color >> 24 & 255) / 255.0F; float f = (float) (color >>
+		 * 16 & 255) / 255.0F; float f1 = (float) (color >> 8 & 255) / 255.0F; float f2
+		 * = (float) (color & 255) / 255.0F;
+		 * 
+		 * int j1;
+		 * 
+		 * Tessellator te = Tessellator.getInstance(); VertexBuffer b = te.getBuffer();
+		 * //GlStateManager.enableBlend(); GlStateManager.disableTexture2D();
+		 * //GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+		 * GlStateManager.color(f, f1, f2, f3); b.begin(GL11.GL_TRIANGLE_FAN,
+		 * DefaultVertexFormats.POSITION_COLOR);
+		 * 
+		 * for (int ii = 0; ii < num_segments; ii++) {
+		 * 
+		 * b.pos((double) x + x1, (double) y + y1, 0.0D);
+		 * 
+		 * // apply the rotation matrix t = x; x = c * x + s * y; y = -s * t + c * y; }
+		 * 
+		 * te.draw(); GlStateManager.enableTexture2D(); //GlStateManager.disableBlend();
+		 */
 	}
+
 	public void drawCircleOutline(float x1, float y1, float radius, int num_segments, int color) {
-/*
-		double theta = 2 * 3.1415926 / (double) num_segments;
-		float c = (float) Math.cos(theta); // precalculate the sine and cosine
-		float s = (float) Math.sin(theta);
-		float t;
-
-		float x = radius;// we start at angle = 0
-		float y = 0;
-
-		float f3 = (float) (color >> 24 & 255) / 255.0F;
-		float f = (float) (color >> 16 & 255) / 255.0F;
-		float f1 = (float) (color >> 8 & 255) / 255.0F;
-		float f2 = (float) (color & 255) / 255.0F;
-
-		int j1;
-
-		Tessellator te = Tessellator.getInstance();
-        VertexBuffer b = te.getBuffer();
-		//GlStateManager.enableBlend();
-		GlStateManager.disableTexture2D();
-		//GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-		GlStateManager.color(f, f1, f2, f3);
-		b.begin(GL11.GL_LINE_LOOP, DefaultVertexFormats.POSITION_COLOR);
-
-		for (int ii = 0; ii < num_segments; ii++) {
-
-			b.pos((double) x + x1, (double) y + y1, 0.0D);
-
-			// apply the rotation matrix
-			t = x;
-			x = c * x + s * y;
-			y = -s * t + c * y;
-		}
-
-		te.draw();
-		GlStateManager.enableTexture2D();
-		//GlStateManager.disableBlend();*/
+		/*
+		 * double theta = 2 * 3.1415926 / (double) num_segments; float c = (float)
+		 * Math.cos(theta); // precalculate the sine and cosine float s = (float)
+		 * Math.sin(theta); float t;
+		 * 
+		 * float x = radius;// we start at angle = 0 float y = 0;
+		 * 
+		 * float f3 = (float) (color >> 24 & 255) / 255.0F; float f = (float) (color >>
+		 * 16 & 255) / 255.0F; float f1 = (float) (color >> 8 & 255) / 255.0F; float f2
+		 * = (float) (color & 255) / 255.0F;
+		 * 
+		 * int j1;
+		 * 
+		 * Tessellator te = Tessellator.getInstance(); VertexBuffer b = te.getBuffer();
+		 * //GlStateManager.enableBlend(); GlStateManager.disableTexture2D();
+		 * //GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+		 * GlStateManager.color(f, f1, f2, f3); b.begin(GL11.GL_LINE_LOOP,
+		 * DefaultVertexFormats.POSITION_COLOR);
+		 * 
+		 * for (int ii = 0; ii < num_segments; ii++) {
+		 * 
+		 * b.pos((double) x + x1, (double) y + y1, 0.0D);
+		 * 
+		 * // apply the rotation matrix t = x; x = c * x + s * y; y = -s * t + c * y; }
+		 * 
+		 * te.draw(); GlStateManager.enableTexture2D(); //GlStateManager.disableBlend();
+		 */
 
 	}
 
@@ -107,8 +87,8 @@ public class MCGui extends Gui {
 		}
 	}
 
-	public void drawBorderedTexturedModalRect(int x, int y, int width, int height, int textureX, int textureY, int textureWidth, int textureHeight,
-			int borderSize) {
+	public void drawBorderedTexturedModalRect(int x, int y, int width, int height, int textureX, int textureY,
+			int textureWidth, int textureHeight, int borderSize) {
 
 		TextureLink1D[] xSections = sliceBorderedTexturedRectDim(x, width, textureX, textureWidth, borderSize);
 		TextureLink1D[] ySections = sliceBorderedTexturedRectDim(y, height, textureY, textureHeight, borderSize);
@@ -126,7 +106,8 @@ public class MCGui extends Gui {
 		drawTexturedModalRect(xLink.x, yLink.x, xLink.textureX, yLink.textureX, xLink.width, yLink.width);
 	}
 
-	public TextureLink1D[] sliceBorderedTexturedRectDim(int x, int width, int textureX, int textureWidth, int borderSize) {
+	public TextureLink1D[] sliceBorderedTexturedRectDim(int x, int width, int textureX, int textureWidth,
+			int borderSize) {
 
 		boolean simpleX = width < (textureWidth - borderSize) * 2;
 		TextureLink1D[] xSections;
@@ -148,12 +129,15 @@ public class MCGui extends Gui {
 
 			for (int i = 1; i <= neededMidSections; ++i) {
 
-				int midSize = (i == neededMidSections) ? neededMidSize - (maxMidSize * (neededMidSections - 1)) : maxMidSize;
-				xSections[i] = new TextureLink1D(x + borderSize + ((i - 1) * maxMidSize), textureX + borderSize, midSize);
+				int midSize = (i == neededMidSections) ? neededMidSize - (maxMidSize * (neededMidSections - 1))
+						: maxMidSize;
+				xSections[i] = new TextureLink1D(x + borderSize + ((i - 1) * maxMidSize), textureX + borderSize,
+						midSize);
 
 			}
 
-			xSections[xSections.length - 1] = new TextureLink1D((x + width) - borderSize, (textureX + textureWidth) - borderSize, borderSize);
+			xSections[xSections.length - 1] = new TextureLink1D((x + width) - borderSize,
+					(textureX + textureWidth) - borderSize, borderSize);
 
 		}
 		return xSections;

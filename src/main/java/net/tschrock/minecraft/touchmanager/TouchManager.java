@@ -20,7 +20,7 @@ public class TouchManager {
 	private TouchManager() {
 
 	}
-	
+
 	public static String getCurrentTouchDriver() {
 		return touchDriver.getClass().getSimpleName();
 	}

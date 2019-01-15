@@ -90,7 +90,8 @@ public class MCGuiScreen extends GuiScreen implements IMCGuiContainer {
 		if (Mouse.getEventButtonState()) // If button was involved and it is pressed (Button down)
 		{
 			if (downedButtons == 0) {
-				DebugHelper.log(LogLevel.DEBUG, "Focus changed to " + overComponent.getClass().getSimpleName() + "with id=" + overComponent.getId());
+				DebugHelper.log(LogLevel.DEBUG, "Focus changed to " + overComponent.getClass().getSimpleName()
+						+ "with id=" + overComponent.getId());
 				focusedComponent = overComponent;
 			}
 			downedButtons++;

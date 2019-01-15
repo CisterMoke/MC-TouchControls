@@ -35,7 +35,8 @@ public class FMLEventHandler {
 			}
 			wasTouchModeEnabled = touchModeEnabled; // Record whether or not touch mode was enabled
 		}
-		if (event.phase == Phase.END && didIGHFchange) { // If we are running after the mouse code AND we messed with inGameHasFocus
+		if (event.phase == Phase.END && didIGHFchange) { // If we are running after the mouse code AND we messed with
+															// inGameHasFocus
 
 			mc.inGameHasFocus = oldInGameHasFocus; // Reset inGameHasFocus to it's original value
 			didIGHFchange = false; // Unset didIGHFchange

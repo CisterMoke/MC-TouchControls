@@ -13,10 +13,10 @@ public class MCGuiTestScreen extends MCGuiTouchScreen {
 		addComponent(new MCGuiButton(1, "Hello World", 20, 45, 200, 20));
 		addComponent(new MCGuiTouchPad(2, 20, 70, 400, 100));
 	}
-	
+
 	@Override
 	public void onGuiClosed() {
 		TouchManager.disableEventQueue();
 	}
-	
+
 }

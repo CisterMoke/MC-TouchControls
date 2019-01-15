@@ -105,7 +105,9 @@ public class MCGuiButton extends MCGuiLabel {
 
 	@Override
 	public void onMouseDown(MCGuiMouseEvent event) {
-		DebugHelper.log(LogLevel.DEBUG, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseDown at (" + event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
+		DebugHelper.log(LogLevel.DEBUG,
+				"MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseDown at ("
+						+ event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
 		if (event.getButton() == 0) {
 			mouseDown = true;
 		}
@@ -113,19 +115,25 @@ public class MCGuiButton extends MCGuiLabel {
 
 	@Override
 	public void onMouseOver(MCGuiMouseEvent event) {
-		DebugHelper.log(LogLevel.DEBUG1, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseOver at (" + event.getX() + ", " + event.getY() + ")");
+		DebugHelper.log(LogLevel.DEBUG1,
+				"MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseOver at ("
+						+ event.getX() + ", " + event.getY() + ")");
 		mouseOver = true;
 	}
 
 	@Override
 	public void onMouseOut(MCGuiMouseEvent event) {
-		DebugHelper.log(LogLevel.DEBUG1, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseOut at (" + event.getX() + ", " + event.getY() + ")");
+		DebugHelper.log(LogLevel.DEBUG1,
+				"MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseOut at ("
+						+ event.getX() + ", " + event.getY() + ")");
 		mouseOver = false;
 	}
 
 	@Override
 	public void onMouseUp(MCGuiMouseEvent event) {
-		DebugHelper.log(LogLevel.DEBUG, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseUp at (" + event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
+		DebugHelper.log(LogLevel.DEBUG,
+				"MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseUp at ("
+						+ event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
 		System.out.println("onMouseUp: " + event.getButton());
 		if (event.getButton() == 0) {
 			mouseDown = false;
@@ -134,10 +142,14 @@ public class MCGuiButton extends MCGuiLabel {
 
 	@Override
 	public void onMouseClick(MCGuiMouseEvent event) {
-		DebugHelper.log(LogLevel.DEBUG, "MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "") + "onMouseClick at (" + event.getX() + ", " + event.getY() + ") with button=" + event.getButton());
+		DebugHelper.log(LogLevel.DEBUG,
+				"MCGuiButton(\"" + text + "\") recieved " + (event.isEmulated() ? "emulated " : "")
+						+ "onMouseClick at (" + event.getX() + ", " + event.getY() + ") with button="
+						+ event.getButton());
 		if (enabled && visible && event.getButton() == 0 && checkBounds(event.getX(), event.getY())) {
 			if (buttonSoundLocation != null) {
-				//Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord(new ResourceLocation(buttonSoundLocation), 1.0F));
+				// Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord(new
+				// ResourceLocation(buttonSoundLocation), 1.0F));
 			}
 			fireButtonPushEvent(new MCGuiButtonPushEvent(this, event.getX(), event.getY()));
 		}
@@ -161,10 +173,12 @@ public class MCGuiButton extends MCGuiLabel {
 				GlStateManager.enableBlend();
 				GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 				GlStateManager.blendFunc(770, 771);
-				this.drawBorderedTexturedModalRect(preferedX, preferedY, preferedWidth, preferedHeight, 0, 46 + k * 20, 200, 20, 3);
+				this.drawBorderedTexturedModalRect(preferedX, preferedY, preferedWidth, preferedHeight, 0, 46 + k * 20,
+						200, 20, 3);
 
 			} else {
-				int bgColor = getStateValue(disabledBackgroundColor, mouseDownBackgroundColor, hoverBackgroundColor, backgroundColor);
+				int bgColor = getStateValue(disabledBackgroundColor, mouseDownBackgroundColor, hoverBackgroundColor,
+						backgroundColor);
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				GlStateManager.enableBlend();
 				GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
@@ -173,10 +187,11 @@ public class MCGuiButton extends MCGuiLabel {
 			}
 
 			// Draw button text
-			int fgColor = getStateValue(disabledForegroundColor, mouseDownForegroundColor, hoverForegroundColor, foregroundColor);
+			int fgColor = getStateValue(disabledForegroundColor, mouseDownForegroundColor, hoverForegroundColor,
+					foregroundColor);
 			if (textAlignment == TextAlignment.CENTER) {
-				drawCenteredString(fontRenderer, text, preferedX + (preferedWidth / 2), preferedY + (preferedHeight / 2)
-						- (fontRenderer.FONT_HEIGHT / 2), fgColor);
+				drawCenteredString(fontRenderer, text, preferedX + (preferedWidth / 2),
+						preferedY + (preferedHeight / 2) - (fontRenderer.FONT_HEIGHT / 2), fgColor);
 			} else {
 				drawString(fontRenderer, text, preferedX, preferedY, fgColor);
 			}

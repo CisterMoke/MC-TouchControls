@@ -52,8 +52,8 @@ public class MCGuiTouchDPad extends MCGuiTouchComponent {
 				int yPos = preferedY + padding + ((i - 1) * buttonWidth);
 
 				if (index == 4) {
-					buttons[index] = new MCGuiButton(index, buttonChars[index], xPos + padding, yPos + padding, buttonWidth - (padding * 2),
-							buttonWidth - (padding * 2));
+					buttons[index] = new MCGuiButton(index, buttonChars[index], xPos + padding, yPos + padding,
+							buttonWidth - (padding * 2), buttonWidth - (padding * 2));
 				} else {
 					buttons[index] = new MCGuiButton(index, buttonChars[index], xPos, yPos, buttonWidth, buttonWidth);
 				}
@@ -104,17 +104,26 @@ public class MCGuiTouchDPad extends MCGuiTouchComponent {
 
 		if (event.getType() == Type.TOUCH_START) {
 			if (currentTouchEvent == null) {
-				DebugHelper.log(LogLevel.DEBUG, "MCGuiDPad with id=" + id + " recieved 'TOUCH_START' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+				DebugHelper.log(LogLevel.DEBUG,
+						"MCGuiDPad with id=" + id + " recieved 'TOUCH_START' at (" + event.getX() + ", " + event.getY()
+								+ ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+								+ event.getAdjustedY(parentScreen.height) + "]");
 				currentTouchEvent = event;
 			}
 		} else if (event.getType() == Type.TOUCH_UPDATE) {
 			if (currentTouchEvent != null && currentTouchEvent.getId() == event.getId()) {
-				DebugHelper.log(LogLevel.DEBUG2, "MCGuiDPad with id=" + id + " recieved 'TOUCH_UPDATE' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+				DebugHelper.log(LogLevel.DEBUG2,
+						"MCGuiDPad with id=" + id + " recieved 'TOUCH_UPDATE' at (" + event.getX() + ", " + event.getY()
+								+ ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+								+ event.getAdjustedY(parentScreen.height) + "]");
 				currentTouchEvent = event;
 			}
 		} else if (event.getType() == Type.TOUCH_END) {
 			if (currentTouchEvent != null && currentTouchEvent.getId() == event.getId()) {
-				DebugHelper.log(LogLevel.DEBUG, "MCGuiDPad with id=" + id + " recieved 'TOUCH_END' at (" + event.getX() + ", " + event.getY() + ")~[" + event.getAdjustedX(parentScreen.width) + ", " + event.getAdjustedY(parentScreen.height) + "]");
+				DebugHelper.log(LogLevel.DEBUG,
+						"MCGuiDPad with id=" + id + " recieved 'TOUCH_END' at (" + event.getX() + ", " + event.getY()
+								+ ")~[" + event.getAdjustedX(parentScreen.width) + ", "
+								+ event.getAdjustedY(parentScreen.height) + "]");
 				currentTouchEvent = null;
 			}
 		}
@@ -159,7 +168,7 @@ public class MCGuiTouchDPad extends MCGuiTouchComponent {
 		if (angle < 0) {
 			angle += Math.PI * 2.0;
 		}
-		if (angle >=  Math.PI * 2.0) {
+		if (angle >= Math.PI * 2.0) {
 			angle -= Math.PI * 2.0;
 		}
 

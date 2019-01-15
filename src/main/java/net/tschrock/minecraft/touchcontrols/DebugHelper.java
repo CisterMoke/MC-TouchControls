@@ -50,11 +50,12 @@ public class DebugHelper {
 		}
 	}
 
-	public static final String[] sysProps = { "java.version", "java.vendor", "java.vendor.url", "java.home", "java.vm.specification.version",
-			"java.vm.specification.vendor", "java.vm.specification.name", "java.vm.version", "java.vm.vendor", "java.vm.name",
-			"java.specification.version", "java.specification.vendor", "java.specification.name", "java.class.version", "java.class.path",
-			"java.library.path", "java.io.tmpdir", "java.compiler", "os.name", "os.arch", "os.version", "file.separator", "path.separator",
-			"line.separator" };
+	public static final String[] sysProps = { "java.version", "java.vendor", "java.vendor.url", "java.home",
+			"java.vm.specification.version", "java.vm.specification.vendor", "java.vm.specification.name",
+			"java.vm.version", "java.vm.vendor", "java.vm.name", "java.specification.version",
+			"java.specification.vendor", "java.specification.name", "java.class.version", "java.class.path",
+			"java.library.path", "java.io.tmpdir", "java.compiler", "os.name", "os.arch", "os.version",
+			"file.separator", "path.separator", "line.separator" };
 
 	public static void logSystemInfo() {
 		log(LogLevel.NOTE, "System Info:");
@@ -118,7 +119,8 @@ public class DebugHelper {
 
 		if (mc.currentScreen != null) {
 			log(LogLevel.NOTE, "    Current Screen: " + mc.currentScreen.getClass().getSimpleName());
-			log(LogLevel.NOTE, "    Current Screen Dimensions: " + mc.currentScreen.width + "x" + mc.currentScreen.height);
+			log(LogLevel.NOTE,
+					"    Current Screen Dimensions: " + mc.currentScreen.width + "x" + mc.currentScreen.height);
 		} else {
 			log(LogLevel.NOTE, "    Current Screen: null");
 		}
@@ -127,15 +129,18 @@ public class DebugHelper {
 	}
 
 	public static void log(LogLevel level, Object o) {
-		if (!enabled) return;
-		if (level.value <= logLevel.value){
-			logStream.print("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date()) + "] [" + level.toString() + "] ");
+		if (!enabled)
+			return;
+		if (level.value <= logLevel.value) {
+			logStream.print("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date()) + "] ["
+					+ level.toString() + "] ");
 			logStream.println(o);
 		}
 	}
 
 	public static void printTrace(LogLevel level, Exception e) {
-		if (!enabled) return;
+		if (!enabled)
+			return;
 		logStream.print("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date()) + "] ");
 		e.printStackTrace(logStream);
 	}

@@ -113,7 +113,7 @@ public class KeyHelper {
 		slot = slot > 0 ? slot : 0;
 
 		if (mc.player.isSpectator()) {
-			mc.ingameGUI.getSpectatorGui().onHotbarSelected(slot); 
+			mc.ingameGUI.getSpectatorGui().onHotbarSelected(slot);
 		} else {
 			mc.player.inventory.currentItem = slot;
 		}
@@ -123,7 +123,8 @@ public class KeyHelper {
 		if (mc.playerController.isRidingHorse()) {
 			mc.player.sendHorseInventory();
 		} else {
-			mc.getConnection().getNetworkManager().sendPacket(new CPacketClientStatus(CPacketClientStatus.State.REQUEST_STATS));
+			mc.getConnection().getNetworkManager()
+					.sendPacket(new CPacketClientStatus(CPacketClientStatus.State.REQUEST_STATS));
 			mc.displayGuiScreen(new GuiInventory(mc.player));
 		}
 	}
@@ -182,7 +183,8 @@ public class KeyHelper {
 	}
 
 	// These directly modify key binding states instead of using method calls
-	// because I don't want to have to extend MovementInput and overwrite EntityPlayerSP.movementInput
+	// because I don't want to have to extend MovementInput and overwrite
+	// EntityPlayerSP.movementInput
 
 	// Move forward
 	// MovementInput.moveForward++
@@ -247,18 +249,18 @@ public class KeyHelper {
 	// Does reflection even work once it's compiled/obfuscated?
 
 	public static void rightClick(Minecraft mc) {
-		tryRunMethods(mc, new String[]{"rightClickMouse", "func_147121_ag"});
+		tryRunMethods(mc, new String[] { "rightClickMouse", "func_147121_ag" });
 	}
 
 	public static void click(Minecraft mc) {
-		tryRunMethods(mc, new String[]{"clickMouse", "func_147116_af"});
+		tryRunMethods(mc, new String[] { "clickMouse", "func_147116_af" });
 	}
-	
-	
-	public static Object tryRunMethods(Object o, String[] methodNames){
+
+	public static Object tryRunMethods(Object o, String[] methodNames) {
 		Method method = null;
 		for (String name : methodNames) {
-			if ((method = tryGetMethod(o, name)) != null) break;
+			if ((method = tryGetMethod(o, name)) != null)
+				break;
 		}
 		if (method != null) {
 			try {

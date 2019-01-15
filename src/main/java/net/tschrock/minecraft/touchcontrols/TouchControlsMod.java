@@ -69,7 +69,7 @@ public class TouchControlsMod {
 
 			DebugHelper.logSystemInfo();
 		}
-		
+
 		TouchManager.init(config_customTuio);
 	}
 
@@ -91,8 +91,7 @@ public class TouchControlsMod {
 	}
 
 	public void toggleTouchMode() {
-		Minecraft.getMinecraft().gameSettings.touchscreen = !Minecraft
-				.getMinecraft().gameSettings.touchscreen;
+		Minecraft.getMinecraft().gameSettings.touchscreen = !Minecraft.getMinecraft().gameSettings.touchscreen;
 	}
 
 	public void setTouchMode(boolean enabled) {
@@ -109,43 +108,30 @@ public class TouchControlsMod {
 		int intMin = Integer.MIN_VALUE;
 		int intMax = Integer.MAX_VALUE;
 
-		config_xOffset = configFile.getInt("Touch Offset X", cat,
-				config_xOffset, intMin, intMax, "Touch offset for the X-Axis.");
-		config_yOffset = configFile.getInt("Touch Offset Y", cat,
-				config_yOffset, intMin, intMax, "Touch offset for the Y-Axis.");
+		config_xOffset = configFile.getInt("Touch Offset X", cat, config_xOffset, intMin, intMax,
+				"Touch offset for the X-Axis.");
+		config_yOffset = configFile.getInt("Touch Offset Y", cat, config_yOffset, intMin, intMax,
+				"Touch offset for the Y-Axis.");
 
-		config_invertX = configFile.getBoolean("Invert X-Axis", cat,
-				config_invertX, "Inverts the X-Axis.");
-		config_invertY = configFile.getBoolean("Invert Y-Axis", cat,
-				config_invertY, "Inverts the Y-Axis.");
-		config_sensitivity = configFile.getInt("Movement Sensitivity", cat,
-				config_sensitivity, 0, 100,
+		config_invertX = configFile.getBoolean("Invert X-Axis", cat, config_invertX, "Inverts the X-Axis.");
+		config_invertY = configFile.getBoolean("Invert Y-Axis", cat, config_invertY, "Inverts the Y-Axis.");
+		config_sensitivity = configFile.getInt("Movement Sensitivity", cat, config_sensitivity, 0, 100,
 				"The sensitivity of touch movement.");
 
-		config_dPadSize = configFile.getInt("D-Pad Size", cat, config_dPadSize,
-				10, 100, "The size of the D-pad on the screen.");
-		config_dPadOpacity = configFile.getInt("D-Pad Opacity", cat,
-				config_dPadOpacity, 50, 100,
+		config_dPadSize = configFile.getInt("D-Pad Size", cat, config_dPadSize, 10, 100,
+				"The size of the D-pad on the screen.");
+		config_dPadOpacity = configFile.getInt("D-Pad Opacity", cat, config_dPadOpacity, 50, 100,
 				"The opacity of the D-pad on the screen.");
 
-		config_leftClickTimeout = configFile.getInt("Timeout - Left Click",
-				cat, config_leftClickTimeout, 100, 5000,
+		config_leftClickTimeout = configFile.getInt("Timeout - Left Click", cat, config_leftClickTimeout, 100, 5000,
 				"The max amount of time to wait for an emulated left click.");
-		config_rightClickTimeout = configFile
-				.getInt("Timeout - Right Click", cat, config_rightClickTimeout,
-						200, 5000,
-						"The amount of time to wait for a touch before it's considered a right click.");
-		config_dragStartRadius = configFile
-				.getInt("Drag Start Radius", cat, config_dragStartRadius, 0,
-						100,
-						"The amount of leeway given to a touch before it's considered a drag.");
+		config_rightClickTimeout = configFile.getInt("Timeout - Right Click", cat, config_rightClickTimeout, 200, 5000,
+				"The amount of time to wait for a touch before it's considered a right click.");
+		config_dragStartRadius = configFile.getInt("Drag Start Radius", cat, config_dragStartRadius, 0, 100,
+				"The amount of leeway given to a touch before it's considered a drag.");
 
-		config_customTuio = configFile
-				.getBoolean(
-						"(Dev) Use Custom TUIO Server",
-						cat,
-						config_customTuio,
-						"Allows you to run your own TUIO output bridge instead of the built-in one. Requires restart.");
+		config_customTuio = configFile.getBoolean("(Dev) Use Custom TUIO Server", cat, config_customTuio,
+				"Allows you to run your own TUIO output bridge instead of the built-in one. Requires restart.");
 		config_debug = configFile.getBoolean("Debug Mode", cat, config_invertY,
 				"Saves a debug log in .minecraft/TouchControls.log.");
 

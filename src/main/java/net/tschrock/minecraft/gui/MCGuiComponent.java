@@ -80,7 +80,7 @@ public class MCGuiComponent extends MCGui {
 	public void setForegroundColor(int foregroundColor) {
 		this.foregroundColor = foregroundColor;
 	}
-	
+
 	public int getDisabledBackgroundColor() {
 		return disabledBackgroundColor;
 	}
@@ -135,7 +135,7 @@ public class MCGuiComponent extends MCGui {
 
 	public MCGuiComponent(int id, int x, int y, int width, int height, int backgroundColor, int foregroundColor) {
 		this.id = id;
-		preferedX = x;	
+		preferedX = x;
 		preferedY = y;
 		preferedWidth = width;
 		preferedHeight = height;
@@ -150,10 +150,10 @@ public class MCGuiComponent extends MCGui {
 		}
 	}
 
-	public boolean checkBounds(int x, int y){
+	public boolean checkBounds(int x, int y) {
 		return x >= preferedX && y >= preferedY && x < preferedX + preferedWidth && y < preferedY + preferedHeight;
 	}
-	
+
 	public void onFocus() {
 
 	}
@@ -165,7 +165,7 @@ public class MCGuiComponent extends MCGui {
 	public void onMouseOver(MCGuiMouseEvent event) {
 
 	}
-	
+
 	public void onMouseOut(MCGuiMouseEvent event) {
 
 	}

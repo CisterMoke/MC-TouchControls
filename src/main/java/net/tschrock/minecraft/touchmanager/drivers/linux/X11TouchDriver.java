@@ -14,7 +14,7 @@ import net.tschrock.minecraft.touchmanager.ITouchDriver;
 import net.tschrock.minecraft.touchmanager.TouchEvent;
 
 public class X11TouchDriver extends GenericTouchDriver {
-	
+
 	X11TouchDriver self;
 
 	BinRunner procEx;
@@ -22,13 +22,13 @@ public class X11TouchDriver extends GenericTouchDriver {
 	OutputStream procIn = null;
 	InputStream procOut = null;
 	BufferedReader br = null;
-	
+
 	Boolean running = false;
-	
+
 	public X11TouchDriver() {
 
 		self = this;
-		
+
 		Thread closeChildThread = new Thread() {
 			public void run() {
 				self.shutdown();
@@ -40,10 +40,11 @@ public class X11TouchDriver extends GenericTouchDriver {
 		this.start();
 	}
 
-	public boolean isNative(){
+	public boolean isNative() {
 		return true;
 	}
-	public boolean hasGlobalFocus(){
+
+	public boolean hasGlobalFocus() {
 		return true;
 	}
 
@@ -65,14 +66,14 @@ public class X11TouchDriver extends GenericTouchDriver {
 			int x;
 			int y;
 			TouchEvent.Type eType;
-			
+
 			while ((sCurrentLine = br.readLine()) != null && running) {
 				parts = sCurrentLine.split(",");
 				type = Integer.parseInt(parts[0]);
 				id = Integer.parseInt(parts[1]);
 				x = Integer.parseInt(parts[2]);
 				y = Integer.parseInt(parts[3]);
-				
+
 				if (type == 18) { // It's the start of a touch
 					eType = TouchEvent.Type.TOUCH_START;
 				} else if (type == 19) { // We are just updating the touch
@@ -94,17 +95,16 @@ public class X11TouchDriver extends GenericTouchDriver {
 		}
 
 	}
-	
 
 	public void requestStop() {
-		if (running && proc.isAlive()){
+		if (running && proc.isAlive()) {
 			running = false;
 			proc.destroy();
 		}
 	}
-	
+
 	public void shutdown() {
-		if(proc.isAlive()){
+		if (proc.isAlive()) {
 			proc.destroy();
 			try {
 				br.close();
