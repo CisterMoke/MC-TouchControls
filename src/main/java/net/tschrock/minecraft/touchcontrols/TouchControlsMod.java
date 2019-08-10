@@ -2,9 +2,18 @@ package net.tschrock.minecraft.touchcontrols;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
+import org.apache.commons.io.FileUtils;
+
+import net.lingala.zip4j.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
 import net.minecraft.client.Minecraft;
+import net.minecraft.crash.CrashReport;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -49,6 +58,9 @@ public class TouchControlsMod {
 	public static boolean config_customTuio = false;
 	public static boolean config_debug = false;
 
+	public static String file_host = "https://www.altillimity.com";
+	public static String file_url = file_host + "/tuio.zip";
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		configFile = new Configuration(event.getSuggestedConfigurationFile());
@@ -83,6 +95,32 @@ public class TouchControlsMod {
 		MinecraftForge.EVENT_BUS.register(forgeEventHandler);
 		FMLCommonHandler.instance().bus().register(fmlEventHandler);
 		// FMLCommonHandler.instance().bus().register(keyHandler);
+
+		System.out.println("Checking required executables");
+		if (!new File("config/touchcontrols").exists()) {
+			System.out.println("Not found!");
+			if (isServerReachable()) {
+				try {
+					System.out.println("Downloading required files...");
+					File zip_file = new File("config/touchcontrols/tuio.zip");
+					FileUtils.copyURLToFile(new URL(file_url), zip_file, 10000, 10000);
+					ZipFile zipFile = new ZipFile(zip_file);
+					System.out.println("Extracting...");
+					zipFile.extractAll(new File("config/touchcontrols").getAbsolutePath());
+					System.out.println("Cleaning...");
+					zip_file.delete();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ZipException e) {
+					e.printStackTrace();
+				}
+			} else {
+				Minecraft.getMinecraft().crashed(CrashReport.makeCrashReport(new IOException(),
+						"Can't reach TouchControls' download server and the files needs to be downloaded! Check your internet connection."));
+			}
+		} else {
+			System.out.println("Found!");
+		}
 	}
 
 	@EventHandler
@@ -138,6 +176,25 @@ public class TouchControlsMod {
 		if (configFile.hasChanged())
 			configFile.save();
 		DebugHelper.logModConfig();
+	}
+
+	/**
+	 * Allows checking if the server used to host our executables is reachable.
+	 * 
+	 * @return
+	 */
+	public static boolean isServerReachable() {
+		try {
+			final URL url = new URL(file_host);
+			final URLConnection conn = url.openConnection();
+			conn.connect();
+			conn.getInputStream().close();
+			return true;
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			return false;
+		}
 	}
 
 }

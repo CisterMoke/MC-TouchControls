@@ -46,45 +46,27 @@ public class BinRunner {
         }
     }
 
-    public BinRunner(String internalLocation) {
-        this(internalLocation, "");
+    public BinRunner(String extractedLocation) {
+        this(extractedLocation, "");
     }
 
-    public BinRunner(String internalLocation, String commandArguments) {
-        this.internalLocation = internalLocation;
+    public BinRunner(String extractedLocation, String commandArguments) {
+        this.extractedLocation = extractedLocation;
         this.commandArguments = commandArguments;
 
         this.self = this;
     }
 
-    boolean extracted = false;
     boolean running = false;
     public boolean logError = true;
     public boolean logOutput = true;
 
-    public void extract() {
-        if (this.extracted) {
-            cleanup();
-        }
-        try {
-            this.extractedLocation = extractResource(this.internalLocation);
-            this.extracted = true;
-            DebugHelper.log(DebugHelper.LogLevel.INFO,
-                    "Extracted '" + this.internalLocation + "' to '" + this.extractedLocation + "'");
-        } catch (IOException e) {
-            DebugHelper.log(DebugHelper.LogLevel.ERROR, "Error extracting '" + this.internalLocation + "':");
-            DebugHelper.printTrace(DebugHelper.LogLevel.ERROR, e);
-        }
-    }
-
     public Process run() {
-        if (!this.extracted) {
-            extract();
-        }
         if (this.running) {
             stop();
         }
         try {
+            new File(extractedLocation).setExecutable(true);
             this.binProcess = Runtime.getRuntime().exec(this.extractedLocation + " " + this.commandArguments);
             this.running = true;
             DebugHelper.log(DebugHelper.LogLevel.NOTE,
@@ -108,56 +90,8 @@ public class BinRunner {
         return this.binProcess;
     }
 
-    public Process extractAndRun() {
-        extract();
-        return run();
-    }
-
     public void stop() {
         this.binProcess.destroy();
         this.running = false;
-    }
-
-    public void cleanup() {
-        try {
-            Files.deleteIfExists(Paths.get(this.extractedLocation, new String[0]));
-        } catch (IOException e) {
-            DebugHelper.log(DebugHelper.LogLevel.WARNING,
-                    "IOExeption while cleaning up '" + this.extractedLocation + "'");
-            DebugHelper.printTrace(DebugHelper.LogLevel.WARNING, e);
-        }
-        this.extracted = false;
-    }
-
-    private static void close(Closeable stream) {
-        if (stream != null) {
-            try {
-                stream.close();
-            } catch (IOException e) {
-                DebugHelper.log(DebugHelper.LogLevel.WARNING, "IOExeption while closing stream:");
-                DebugHelper.printTrace(DebugHelper.LogLevel.WARNING, e);
-            }
-        }
-    }
-
-    private String extractResource(String resourceLocation) throws IOException {
-        InputStream fileInStream = getClass().getClassLoader().getResourceAsStream(resourceLocation);
-        File tempFile = File.createTempFile(new File(resourceLocation).getName(), "");
-        tempFile.deleteOnExit();
-        tempFile.setExecutable(true);
-        OutputStream fileOutStream = new FileOutputStream(tempFile);
-
-        try {
-            byte[] buf = new byte['Ѐ'];
-            int i = 0;
-
-            while ((i = fileInStream.read(buf)) != -1) {
-                fileOutStream.write(buf, 0, i);
-            }
-        } finally {
-            close(fileInStream);
-            close(fileOutStream);
-        }
-        return tempFile.getAbsolutePath();
     }
 }

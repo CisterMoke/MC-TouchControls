@@ -16,7 +16,7 @@ public class X112TUIOTouchDriver extends TUIOTouchDriver {
         };
         Runtime.getRuntime().addShutdownHook(closeChildThread);
 
-        this.procEx = new BinRunner("bin/x112tuio");
-        this.proc = this.procEx.extractAndRun();
+        this.procEx = new BinRunner("config/touchcontrols/x112tuio");
+        this.proc = this.procEx.run();
     }
 }

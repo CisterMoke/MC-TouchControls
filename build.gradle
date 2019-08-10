@@ -21,7 +21,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2836"
+    version = "1.12.2-14.23.5.2838"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -60,6 +60,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     shade fileTree(dir: 'lib', include: ['*.jar']) 
+    shade 'net.lingala.zip4j:zip4j:2.0.3'
 }
 
 jar {
