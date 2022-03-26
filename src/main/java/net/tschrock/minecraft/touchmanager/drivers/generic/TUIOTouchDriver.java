@@ -16,7 +16,6 @@ public class TUIOTouchDriver extends net.tschrock.minecraft.touchmanager.Generic
     public TUIOTouchDriver() {
         this.tClient = new TuioClient();
         this.tClient.addTuioListener(this);
-        this.tClient.connect();
     }
 
     public boolean isNative() {
@@ -25,6 +24,12 @@ public class TUIOTouchDriver extends net.tschrock.minecraft.touchmanager.Generic
 
     public boolean hasGlobalFocus() {
         return true;
+    }
+
+    public void connect() {
+        System.out.println("Connecting TUIOClient...");
+        this.tClient.connect();
+        System.out.println("Done!");
     }
 
     public void addTuioBlob(TuioBlob arg0) {

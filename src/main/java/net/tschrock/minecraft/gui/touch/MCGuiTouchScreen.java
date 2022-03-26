@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 
-import scala.collection.parallel.ParIterableLike.Min;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.settings.KeyBinding;
 import net.tschrock.minecraft.gui.MCGuiComponent;
 import net.tschrock.minecraft.gui.MCGuiScreen;

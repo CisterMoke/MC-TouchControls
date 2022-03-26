@@ -1,27 +1,18 @@
 package net.tschrock.minecraft.gui.touch;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
-import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
 import net.tschrock.minecraft.gui.events.IMCGuiTouchPadListener;
-import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;
-import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
 import net.tschrock.minecraft.gui.events.TouchPadEvent;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ActionType;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ClickType;
 import net.tschrock.minecraft.gui.touch.TrackedTouchEvent.TapType;
 import net.tschrock.minecraft.touchcontrols.DebugHelper;
 import net.tschrock.minecraft.touchcontrols.TouchControlsMod;

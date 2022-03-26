@@ -1,7 +1,6 @@
 package net.tschrock.minecraft.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
 import net.tschrock.minecraft.touchmanager.TouchEvent;
 

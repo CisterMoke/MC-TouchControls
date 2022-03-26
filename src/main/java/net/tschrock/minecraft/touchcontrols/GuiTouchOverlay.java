@@ -2,15 +2,10 @@ package net.tschrock.minecraft.touchcontrols;
 
 import java.io.IOException;
 
-import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.tschrock.minecraft.gui.MCGui;
 import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
-import net.tschrock.minecraft.gui.MCGuiLabel;
-import net.tschrock.minecraft.gui.MCGuiToggleButton;
 import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
 import net.tschrock.minecraft.gui.events.IMCGuiTouchPadListener;
 import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;

@@ -3,6 +3,8 @@ package net.tschrock.minecraft.touchmanager;
 import java.util.List;
 
 public abstract interface ITouchDriver {
+  public abstract void connect();
+
   public abstract boolean isNative();
 
   public abstract boolean hasGlobalFocus();

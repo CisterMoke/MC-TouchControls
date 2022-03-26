@@ -1,12 +1,7 @@
 package net.tschrock.minecraft.gui;
 
-import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.RenderGlobal;;
 
 public class MCGui extends Gui {
 

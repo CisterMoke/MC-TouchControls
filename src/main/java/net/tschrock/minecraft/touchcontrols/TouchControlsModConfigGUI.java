@@ -1,6 +1,5 @@
 package net.tschrock.minecraft.touchcontrols;
 
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.config.GuiConfig;
 
 public class TouchControlsModConfigGUI extends GuiConfig {

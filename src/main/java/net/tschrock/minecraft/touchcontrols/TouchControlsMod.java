@@ -88,13 +88,6 @@ public class TouchControlsMod {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		DebugHelper.logMinecraftInfo();
-		fmlEventHandler = new FMLEventHandler(this);
-		forgeEventHandler = new ForgeEventHandler(this);
-		// keyHandler = new KeyHandler(this);
-
-		MinecraftForge.EVENT_BUS.register(forgeEventHandler);
-		FMLCommonHandler.instance().bus().register(fmlEventHandler);
-		// FMLCommonHandler.instance().bus().register(keyHandler);
 
 		System.out.println("Checking required executables");
 		if (!new File("config/touchcontrols").exists()) {
@@ -121,6 +114,15 @@ public class TouchControlsMod {
 		} else {
 			System.out.println("Found!");
 		}
+
+		fmlEventHandler = new FMLEventHandler(this);
+		forgeEventHandler = new ForgeEventHandler(this);
+		// keyHandler = new KeyHandler(this);
+
+		MinecraftForge.EVENT_BUS.register(forgeEventHandler);
+		FMLCommonHandler.instance().bus().register(fmlEventHandler);
+		// FMLCommonHandler.instance().bus().register(keyHandler);
+		setTouchMode(true);
 	}
 
 	@EventHandler
@@ -170,7 +172,7 @@ public class TouchControlsMod {
 
 		config_customTuio = configFile.getBoolean("(Dev) Use Custom TUIO Server", cat, config_customTuio,
 				"Allows you to run your own TUIO output bridge instead of the built-in one. Requires restart.");
-		config_debug = configFile.getBoolean("Debug Mode", cat, config_invertY,
+		config_debug = configFile.getBoolean("Debug Mode", cat, config_debug,
 				"Saves a debug log in .minecraft/TouchControls.log.");
 
 		if (configFile.hasChanged())

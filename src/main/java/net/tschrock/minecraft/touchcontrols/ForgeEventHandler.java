@@ -4,44 +4,21 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOverlayDebug;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiScreenHack;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
-import net.tschrock.minecraft.gui.MCGuiTestScreen;
 import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
 import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;
 import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction;
-import net.tschrock.minecraft.gui.touch.MCGuiTouchComponent;
-import net.tschrock.minecraft.gui.touch.MCGuiTouchDPad;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ActionType;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ClickType;
 import net.tschrock.minecraft.touchcontrols.DebugHelper.LogLevel;
-import net.tschrock.minecraft.touchmanager.TouchEvent;
-import net.tschrock.minecraft.touchmanager.TouchManager;
-import net.tschrock.minecraft.touchmanager.TouchEvent.Type;
 
 public class ForgeEventHandler implements IMCGuiButtonPushListener {
 

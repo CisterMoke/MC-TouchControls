@@ -1,16 +1,13 @@
 package net.tschrock.minecraft.touchmanager.drivers.linux;
 
-import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.List;
 
 import net.tschrock.minecraft.touchmanager.BinRunner;
 import net.tschrock.minecraft.touchmanager.GenericTouchDriver;
-import net.tschrock.minecraft.touchmanager.ITouchDriver;
 import net.tschrock.minecraft.touchmanager.TouchEvent;
 
 public class X11TouchDriver extends GenericTouchDriver {
@@ -40,6 +37,8 @@ public class X11TouchDriver extends GenericTouchDriver {
 		this.start();
 	}
 
+	public void connect() {}
+	
 	public boolean isNative() {
 		return true;
 	}

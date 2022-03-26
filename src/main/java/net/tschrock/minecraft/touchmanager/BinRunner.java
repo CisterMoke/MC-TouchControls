@@ -1,15 +1,10 @@
 package net.tschrock.minecraft.touchmanager;
 
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import net.tschrock.minecraft.touchcontrols.DebugHelper;
 
 public class BinRunner {
