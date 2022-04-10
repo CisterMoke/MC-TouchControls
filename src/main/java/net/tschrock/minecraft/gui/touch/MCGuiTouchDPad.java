@@ -1,18 +1,13 @@
 package net.tschrock.minecraft.gui.touch;
 
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL14;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.tschrock.minecraft.gui.IMCGuiContainer;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
 import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
 import net.tschrock.minecraft.touchcontrols.DebugHelper;
-import net.tschrock.minecraft.touchcontrols.KeyHelper;
 import net.tschrock.minecraft.touchcontrols.DebugHelper.LogLevel;
 import net.tschrock.minecraft.touchmanager.TouchEvent;
 import net.tschrock.minecraft.touchmanager.TouchEvent.Type;
@@ -83,7 +78,7 @@ public class MCGuiTouchDPad extends MCGuiTouchComponent {
 		buttons[8].setEnabled(dPadState == 8 || dPadState == 7 || dPadState == 5);
 
 		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_CONSTANT_ALPHA, GL11.GL_DST_COLOR);
+		GlStateManager.blendFunc(GL11.GL_ALPHA, GL11.GL_DST_COLOR);
 		GL14.glBlendColor(0, 0, 0, transparency);
 
 		// Draw background

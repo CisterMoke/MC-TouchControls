@@ -53,6 +53,23 @@ public abstract class GenericTouchDriver extends Thread implements ITouchDriver 
         }
     }
 
+    @Override
+    public ArrayList<TouchEvent> getFilteredEvents(TouchEvent.Type type){
+        ArrayList<TouchEvent> filtered = new ArrayList<TouchEvent>();
+        TouchEvent nextEvent;
+        ConcurrentLinkedQueue<TouchEvent> newQueue = new ConcurrentLinkedQueue<TouchEvent>();
+        while ((nextEvent = this.eventQueue.poll()) != null){
+            if (nextEvent.touchType == type){
+                filtered.add(nextEvent);
+            }
+            else {
+                newQueue.add(nextEvent);
+            }
+        }
+        eventQueue = newQueue;
+        return filtered;
+    }
+
     public TouchEvent getNextTouchEvent() {
         return (TouchEvent) this.eventQueue.poll();
     }

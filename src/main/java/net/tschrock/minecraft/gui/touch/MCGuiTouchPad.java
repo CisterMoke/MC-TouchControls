@@ -1,27 +1,19 @@
 package net.tschrock.minecraft.gui.touch;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
-import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
+import net.minecraft.util.Util;
 import net.tschrock.minecraft.gui.events.IMCGuiTouchPadListener;
-import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;
-import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
 import net.tschrock.minecraft.gui.events.TouchPadEvent;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ActionType;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ClickType;
 import net.tschrock.minecraft.gui.touch.TrackedTouchEvent.TapType;
 import net.tschrock.minecraft.touchcontrols.DebugHelper;
 import net.tschrock.minecraft.touchcontrols.TouchControlsMod;
@@ -145,7 +137,7 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 				// Set clickType = left
 				// Start left click
 
-				if (evt.tapType == TapType.UNDETERMINED && (Minecraft.getSystemTime()
+				if (evt.tapType == TapType.UNDETERMINED && (Util.milliTime()
 						- evt.startEvent.getTime()) < TouchControlsMod.config_leftClickTimeout) {
 					evt.tapType = TapType.TAP;
 					fireTouchEvent(new TouchPadEvent(this, evt, TouchPadEvent.Type.TAP));
@@ -183,7 +175,7 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 	public void draw(Minecraft mc) {
 		for (Entry<Integer, TrackedTouchEvent> tTouchEvent : activeTouches.entrySet()) {
 			TrackedTouchEvent evt = tTouchEvent.getValue();
-			if ((Minecraft.getSystemTime() - evt.startEvent.getTime()) > TouchControlsMod.config_rightClickTimeout
+			if ((Util.milliTime() - evt.startEvent.getTime()) > TouchControlsMod.config_rightClickTimeout
 					&& evt.tapType == TapType.UNDETERMINED) {
 				evt.tapType = TapType.HOLD;
 				fireTouchEvent(new TouchPadEvent(this, evt, TouchPadEvent.Type.HOLD_START));
@@ -201,7 +193,7 @@ public class MCGuiTouchPad extends MCGuiTouchComponent {
 					// activeTouch.getValue().getStartEvent().getTouchTime());
 
 					GlStateManager.enableBlend();
-					GlStateManager.blendFunc(GL11.GL_CONSTANT_ALPHA, GL11.GL_DST_COLOR);
+					GlStateManager.blendFunc(GL11.GL_ALPHA, GL11.GL_DST_COLOR);
 					GL14.glBlendColor(0, 0, 0, 0.9F);
 
 					drawCircle(x, y, touchIndicatorSize - 1, 20, argbToColorInt(125, 75, 75, 75));

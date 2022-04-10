@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
 import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;
@@ -168,10 +168,10 @@ public class MCGuiButton extends MCGuiLabel {
 			// Draw button background
 			if (buttonTextures != null) {
 				mc.getTextureManager().bindTexture(buttonTextures);
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+				GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 				int k = getStateValue(0, 2, 2, 1);
 				GlStateManager.enableBlend();
-				GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+				GlStateManager.blendFuncSeparate(770, 771, 1, 0);
 				GlStateManager.blendFunc(770, 771);
 				this.drawBorderedTexturedModalRect(preferedX, preferedY, preferedWidth, preferedHeight, 0, 46 + k * 20,
 						200, 20, 3);
@@ -179,11 +179,11 @@ public class MCGuiButton extends MCGuiLabel {
 			} else {
 				int bgColor = getStateValue(disabledBackgroundColor, mouseDownBackgroundColor, hoverBackgroundColor,
 						backgroundColor);
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+				GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GlStateManager.enableBlend();
-				GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+				GlStateManager.blendFuncSeparate(770, 771, 1, 0);
 				GlStateManager.blendFunc(770, 771);
-				this.drawRect(preferedX, preferedY, preferedX + preferedWidth, preferedY + preferedHeight, bgColor);
+				fill(preferedX, preferedY, preferedX + preferedWidth, preferedY + preferedHeight, bgColor);
 			}
 
 			// Draw button text

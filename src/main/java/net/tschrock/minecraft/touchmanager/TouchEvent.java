@@ -1,8 +1,9 @@
 package net.tschrock.minecraft.touchmanager;
 
-import org.lwjgl.opengl.Display;
+import org.lwjgl.glfw.GLFWWindowSizeCallback;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.Util;
 import net.tschrock.minecraft.touchcontrols.TouchControlsMod;
 
 public class TouchEvent {
@@ -43,16 +44,17 @@ public class TouchEvent {
 		this.touchId = touchId;
 		this.touchX = touchX;
 		this.touchY = touchY;
-		this.touchTime = Minecraft.getSystemTime();
+		this.touchTime = Util.milliTime();
 	}
 
 	public int getAdjustedX(int width) {
-		return (this.touchX - TouchManager.getXOffset() + TouchControlsMod.config_xOffset) * width / Display.getWidth();
+		return (this.touchX - TouchManager.getXOffset() + TouchControlsMod.config_xOffset) * width
+		/ Minecraft.getInstance().mainWindow.getWidth();
 	}
 
 	public int getAdjustedY(int height) {
 		return (this.touchY - TouchManager.getYOffset() + TouchControlsMod.config_yOffset) * height
-				/ Display.getHeight();
+				/ Minecraft.getInstance().mainWindow.getWidth();
 	}
 
 }

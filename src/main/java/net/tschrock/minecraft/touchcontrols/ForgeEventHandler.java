@@ -4,44 +4,21 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOverlayDebug;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiScreenHack;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.tschrock.minecraft.gui.MCGuiButton;
-import net.tschrock.minecraft.gui.MCGuiComponent;
-import net.tschrock.minecraft.gui.MCGuiTestScreen;
 import net.tschrock.minecraft.gui.events.IMCGuiButtonPushListener;
 import net.tschrock.minecraft.gui.events.MCGuiButtonPushEvent;
 import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction;
-import net.tschrock.minecraft.gui.touch.MCGuiTouchComponent;
-import net.tschrock.minecraft.gui.touch.MCGuiTouchDPad;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ActionType;
-import net.tschrock.minecraft.gui.touch.EmulatedMouseAction.ClickType;
 import net.tschrock.minecraft.touchcontrols.DebugHelper.LogLevel;
-import net.tschrock.minecraft.touchmanager.TouchEvent;
-import net.tschrock.minecraft.touchmanager.TouchManager;
-import net.tschrock.minecraft.touchmanager.TouchEvent.Type;
 
 public class ForgeEventHandler implements IMCGuiButtonPushListener {
 
@@ -131,83 +108,83 @@ public class ForgeEventHandler implements IMCGuiButtonPushListener {
 		capsBtn = new MCGuiButton(0, "Caps", 0, 120, 50, 20);
 		capsBtn.registerButtonPushListener(this);
 
-		aBtn = new MCGuiButton(0, "A", 50, 0, 20, 20);
-		aBtn.registerButtonPushListener(this);
-
-		bBtn = new MCGuiButton(0, "B", 70, 0, 20, 20);
-		bBtn.registerButtonPushListener(this);
-
-		cBtn = new MCGuiButton(0, "C", 90, 0, 20, 20);
-		cBtn.registerButtonPushListener(this);
-
-		dBtn = new MCGuiButton(0, "D", 110, 0, 20, 20);
-		dBtn.registerButtonPushListener(this);
-
-		eBtn = new MCGuiButton(0, "E", 130, 0, 20, 20);
-		eBtn.registerButtonPushListener(this);
-
-		fBtn = new MCGuiButton(0, "F", 150, 0, 20, 20);
-		fBtn.registerButtonPushListener(this);
-
-		gBtn = new MCGuiButton(0, "G", 170, 0, 20, 20);
-		gBtn.registerButtonPushListener(this);
-
-		hBtn = new MCGuiButton(0, "H", 190, 0, 20, 20);
-		hBtn.registerButtonPushListener(this);
-
-		iBtn = new MCGuiButton(0, "I", 210, 0, 20, 20);
-		iBtn.registerButtonPushListener(this);
-		// nextline
-		jBtn = new MCGuiButton(0, "J", 50, 20, 20, 20);
-		jBtn.registerButtonPushListener(this);
-
-		kBtn = new MCGuiButton(0, "K", 70, 20, 20, 20);
-		kBtn.registerButtonPushListener(this);
-
-		lBtn = new MCGuiButton(0, "L", 90, 20, 20, 20);
-		lBtn.registerButtonPushListener(this);
-
-		mBtn = new MCGuiButton(0, "M", 110, 20, 20, 20);
-		mBtn.registerButtonPushListener(this);
-
-		nBtn = new MCGuiButton(0, "N", 130, 20, 20, 20);
-		nBtn.registerButtonPushListener(this);
-
-		oBtn = new MCGuiButton(0, "O", 150, 20, 20, 20);
-		oBtn.registerButtonPushListener(this);
-
-		pBtn = new MCGuiButton(0, "P", 170, 20, 20, 20);
-		pBtn.registerButtonPushListener(this);
-
-		qBtn = new MCGuiButton(0, "Q", 190, 20, 20, 20);
+		qBtn = new MCGuiButton(0, "Q", 50, 0, 20, 20);
 		qBtn.registerButtonPushListener(this);
 
-		rBtn = new MCGuiButton(0, "R", 210, 20, 20, 20);
-		rBtn.registerButtonPushListener(this);
-		// nextline
-		sBtn = new MCGuiButton(0, "S", 50, 40, 20, 20);
-		sBtn.registerButtonPushListener(this);
+		wBtn = new MCGuiButton(0, "W", 70, 0, 20, 20);
+		wBtn.registerButtonPushListener(this);
 
-		tBtn = new MCGuiButton(0, "T", 70, 40, 20, 20);
+		eBtn = new MCGuiButton(0, "E", 90, 0, 20, 20);
+		eBtn.registerButtonPushListener(this);
+
+		rBtn = new MCGuiButton(0, "R", 110, 0, 20, 20);
+		rBtn.registerButtonPushListener(this);
+
+		tBtn = new MCGuiButton(0, "T", 130, 0, 20, 20);
 		tBtn.registerButtonPushListener(this);
 
-		uBtn = new MCGuiButton(0, "U", 90, 40, 20, 20);
+		yBtn = new MCGuiButton(0, "Y", 150, 0, 20, 20);
+		yBtn.registerButtonPushListener(this);
+
+		uBtn = new MCGuiButton(0, "U", 170, 0, 20, 20);
 		uBtn.registerButtonPushListener(this);
+
+		iBtn = new MCGuiButton(0, "I", 190, 0, 20, 20);
+		iBtn.registerButtonPushListener(this);
+
+		oBtn = new MCGuiButton(0, "O", 210, 0, 20, 20);
+		oBtn.registerButtonPushListener(this);
+
+		pBtn = new MCGuiButton(0, "P", 230, 20, 20, 20);
+		pBtn.registerButtonPushListener(this);
+		// nextline
+		aBtn = new MCGuiButton(0, "A", 50, 20, 20, 20);
+		aBtn.registerButtonPushListener(this);
+
+		sBtn = new MCGuiButton(0, "S", 70, 20, 20, 20);
+		sBtn.registerButtonPushListener(this);
+
+		dBtn = new MCGuiButton(0, "D", 90, 20, 20, 20);
+		dBtn.registerButtonPushListener(this);
+
+		fBtn = new MCGuiButton(0, "F", 110, 20, 20, 20);
+		fBtn.registerButtonPushListener(this);
+
+		gBtn = new MCGuiButton(0, "G", 130, 20, 20, 20);
+		gBtn.registerButtonPushListener(this);
+
+		hBtn = new MCGuiButton(0, "H", 150, 20, 20, 20);
+		hBtn.registerButtonPushListener(this);
+
+		jBtn = new MCGuiButton(0, "J", 170, 20, 20, 20);
+		jBtn.registerButtonPushListener(this);
+
+		kBtn = new MCGuiButton(0, "K", 190, 20, 20, 20);
+		kBtn.registerButtonPushListener(this);
+
+		lBtn = new MCGuiButton(0, "L", 210, 20, 20, 20);
+		lBtn.registerButtonPushListener(this);
+		// nextline
+		zBtn = new MCGuiButton(0, "Z", 50, 40, 20, 20);
+		zBtn.registerButtonPushListener(this);
+
+		xBtn = new MCGuiButton(0, "X", 70, 40, 20, 20);
+		xBtn.registerButtonPushListener(this);
+
+		cBtn = new MCGuiButton(0, "C", 90, 40, 20, 20);
+		cBtn.registerButtonPushListener(this);
 
 		vBtn = new MCGuiButton(0, "V", 110, 40, 20, 20);
 		vBtn.registerButtonPushListener(this);
 
-		wBtn = new MCGuiButton(0, "W", 130, 40, 20, 20);
-		wBtn.registerButtonPushListener(this);
+		bBtn = new MCGuiButton(0, "B", 130, 40, 20, 20);
+		bBtn.registerButtonPushListener(this);
 
-		xBtn = new MCGuiButton(0, "X", 150, 40, 20, 20);
-		xBtn.registerButtonPushListener(this);
+		nBtn = new MCGuiButton(0, "N", 150, 40, 20, 20);
+		nBtn.registerButtonPushListener(this);
 
-		yBtn = new MCGuiButton(0, "Y", 170, 40, 20, 20);
-		yBtn.registerButtonPushListener(this);
-
-		zBtn = new MCGuiButton(0, "Z", 190, 40, 20, 20);
-		zBtn.registerButtonPushListener(this);
+		mBtn = new MCGuiButton(0, "M", 170, 40, 20, 20);
+		mBtn.registerButtonPushListener(this);
 		// nextline
 		dotBtn = new MCGuiButton(0, ".", 50, 60, 20, 20);
 		dotBtn.registerButtonPushListener(this);
@@ -494,8 +471,8 @@ public class ForgeEventHandler implements IMCGuiButtonPushListener {
 		}
 
 		if (event.getButton() == equalBtn) {
-			robot.keyPress(KeyEvent.VK_PLUS);
-			robot.keyRelease(KeyEvent.VK_PLUS);
+			robot.keyPress(KeyEvent.VK_EQUALS);
+			robot.keyRelease(KeyEvent.VK_EQUALS);
 		}
 
 		if (event.getButton() == underscoreBtn) {

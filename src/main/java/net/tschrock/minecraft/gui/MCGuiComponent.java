@@ -1,7 +1,6 @@
 package net.tschrock.minecraft.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.tschrock.minecraft.gui.events.MCGuiMouseEvent;
 import net.tschrock.minecraft.touchmanager.TouchEvent;
 
@@ -146,7 +145,7 @@ public class MCGuiComponent extends MCGui {
 	public void draw(Minecraft mc) {
 		if (visible) {
 			int bgColor = (enabled) ? backgroundColor : disabledBackgroundColor;
-			drawRect(preferedX, preferedY, preferedX + preferedWidth, preferedY + preferedHeight, backgroundColor);
+			fill(preferedX, preferedY, preferedX + preferedWidth, preferedY + preferedHeight, backgroundColor);
 		}
 	}
 

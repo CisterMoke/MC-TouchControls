@@ -5,19 +5,11 @@ import java.lang.reflect.Method;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketClientStatus;
-import net.minecraft.util.ReportedException;
-
-import org.lwjgl.input.Keyboard;
-
-import scala.collection.parallel.ParIterableLike.Min;
 
 public class KeyHelper {
 

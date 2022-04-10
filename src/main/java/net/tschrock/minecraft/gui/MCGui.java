@@ -1,14 +1,9 @@
 package net.tschrock.minecraft.gui;
 
-import org.lwjgl.opengl.GL11;
 
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.RenderGlobal;;
+import net.minecraft.client.gui.AbstractGui;
 
-public class MCGui extends Gui {
+public class MCGui extends AbstractGui {
 
 	public static int argbToColorInt(int alpha, int red, int green, int blue) {
 		return alpha * (16 * 16) * (16 * 16) * (16 * 16) + red * (16 * 16) * (16 * 16) + green * (16 * 16) + blue;
@@ -103,7 +98,9 @@ public class MCGui extends Gui {
 	}
 
 	public void drawTexturedModalRect(TextureLink1D xLink, TextureLink1D yLink) {
-		drawTexturedModalRect(xLink.x, yLink.x, xLink.textureX, yLink.textureX, xLink.width, yLink.width);
+        float f1 = 0.00390625F;
+        float f2 = 0.00390625F;
+		innerBlit(xLink.x, yLink.x, this.blitOffset,xLink.textureX, yLink.textureX, xLink.width, yLink.width, f1, f2);
 	}
 
 	public TextureLink1D[] sliceBorderedTexturedRectDim(int x, int width, int textureX, int textureWidth,
